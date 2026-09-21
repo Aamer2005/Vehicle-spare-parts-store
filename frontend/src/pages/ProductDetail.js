@@ -4,6 +4,13 @@ import './ProductDetail.css'; // <-- import styles
 import api from '../api'; // Add at top
 import axios from 'axios';
 
+const BACKEND_URL = (process.env.REACT_APP_API_URL || 'http://localhost:5000/api').replace('/api', '');
+
+// Then in your JSX:
+{product.image && (
+  <img src={`${BACKEND_URL}${product.image}`} alt={product.productName} />
+)}
+
 const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
@@ -26,7 +33,7 @@ const ProductDetail = () => {
       <div className="detail-card">
         <div className="detail-image">
           {product.image && (
-            <img src={product.image} alt={product.productName} />
+            <img src={`${BACKEND_URL}${product.image}`} alt={product.productName} />
           )}
         </div>
 
