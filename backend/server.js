@@ -17,8 +17,7 @@ app.use(cors({
   credentials: false
 }));
 app.use(express.json());
-app.use('/uploads', express.static('uploads'));
-
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // MongoDB connection – using only ONE connection attempt
 const MONGO_URI = process.env.MONGO_URI || 'mongodb://localhost:27017/partsdb';

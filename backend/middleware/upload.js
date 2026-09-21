@@ -2,13 +2,15 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
-// Path to the uploads folder (one level up from middleware)
+// Build absolute path to the uploads folder (at backend root)
 const uploadDir = path.join(__dirname, '..', 'uploads');
 
 // Create the folder if it doesn't exist
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir, { recursive: true });
   console.log('📁 Created uploads folder at:', uploadDir);
+} else {
+  console.log('📁 Uploads folder exists at:', uploadDir);
 }
 
 const storage = multer.diskStorage({
