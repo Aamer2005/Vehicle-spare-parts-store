@@ -1,0 +1,249 @@
+/* ==========================================
+   PRODUCT DETAIL PAGE
+   ========================================== */
+
+/* ----- Container ----- */
+.product-detail {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px 40px;
+  animation: fadeInUp 0.6s ease;
+}
+
+/* ----- Back Link ----- */
+.back-link {
+  display: inline-block;
+  margin-bottom: 24px;
+  color: #64748b;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  padding: 8px 16px;
+  border-radius: 30px;
+  background: #f8fafc;
+  border: 1px solid #e9edf2;
+}
+
+.back-link:hover {
+  color: #e94560;
+  border-color: #e94560;
+  transform: translateX(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.back-link::before {
+  content: '← ';
+  transition: transform 0.3s ease;
+}
+
+.back-link:hover::before {
+  transform: translateX(-4px);
+}
+
+/* ----- Card Container ----- */
+.detail-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f0f0f0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  transition: box-shadow 0.3s ease;
+}
+
+.detail-card:hover {
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.10);
+}
+
+/* ----- Image Section ----- */
+.detail-image {
+  flex: 1 1 280px;
+  min-width: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.detail-image img {
+  width: 100%;
+  max-width: 350px;
+  max-height: 350px;
+  object-fit: cover;
+  border-radius: 20px;
+  background: #f8fafc;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  transition: all 0.4s ease;
+}
+
+.detail-image img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+/* ----- Info Section ----- */
+.detail-info {
+  flex: 2 1 400px;
+}
+
+.detail-info .p-number {
+  font-size: 14px;
+  font-weight: 600;
+  color: #e94560;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.detail-info h1 {
+  font-size: 32px;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 4px 0;
+}
+
+.detail-info h2 {
+  font-size: 20px;
+  font-weight: 500;
+  color: #475569;
+  margin: 0 0 20px 0;
+}
+
+/* ----- Info Items ----- */
+.detail-info .info-item {
+  display: flex;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.detail-info .info-item:last-of-type {
+  border-bottom: none;
+}
+
+.detail-info .info-label {
+  font-weight: 600;
+  color: #0f172a;
+  min-width: 140px;
+  flex-shrink: 0;
+}
+
+.detail-info .info-value {
+  color: #334155;
+}
+
+.detail-info .info-value .cross-ref {
+  display: inline-block;
+  background: #f1f5f9;
+  padding: 2px 12px;
+  border-radius: 20px;
+  margin: 2px 4px 2px 0;
+  font-size: 14px;
+}
+
+/* ----- Description ----- */
+.detail-info .description {
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 2px solid #f1f5f9;
+}
+
+.detail-info .description h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 8px;
+}
+
+.detail-info .description p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #475569;
+}
+
+/* ----- Loading State ----- */
+.loading-state {
+  text-align: center;
+  padding: 80px 20px;
+  color: #64748b;
+  font-size: 18px;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* ----- Animations ----- */
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ----- Responsive ----- */
+@media (max-width: 768px) {
+  .detail-card {
+    padding: 24px 20px;
+    gap: 24px;
+    flex-direction: column;
+  }
+
+  .detail-image {
+    flex: 1 1 auto;
+  }
+
+  .detail-image img {
+    max-width: 100%;
+    max-height: 250px;
+  }
+
+  .detail-info h1 {
+    font-size: 26px;
+  }
+
+  .detail-info h2 {
+    font-size: 18px;
+  }
+
+  .detail-info .info-item {
+    flex-direction: column;
+    padding: 8px 0;
+  }
+
+  .detail-info .info-label {
+    min-width: auto;
+    margin-bottom: 2px;
+  }
+
+  .back-link {
+    font-size: 14px;
+    padding: 6px 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .detail-card {
+    padding: 16px;
+  }
+
+  .detail-image img {
+    max-height: 200px;
+  }
+
+  .detail-info h1 {
+    font-size: 22px;
+  }
+
+  .detail-info .info-label {
+    font-size: 14px;
+  }
+
+  .detail-info .info-value {
+    font-size: 14px;
+  }
+
+  .detail-info .description p {
+    font-size: 15px;
+  }
+}

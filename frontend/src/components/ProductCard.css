@@ -1,0 +1,104 @@
+/* ProductCard.css */
+
+.product-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  margin: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f0f0f0;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 240px;
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0; /* start invisible, animation reveals */
+  transform: translateY(20px);
+}
+
+/* Stagger animation delay – will be applied via JSX */
+.product-card:nth-child(1) { animation-delay: 0.05s; }
+.product-card:nth-child(2) { animation-delay: 0.10s; }
+.product-card:nth-child(3) { animation-delay: 0.15s; }
+.product-card:nth-child(4) { animation-delay: 0.20s; }
+.product-card:nth-child(5) { animation-delay: 0.25s; }
+.product-card:nth-child(6) { animation-delay: 0.30s; }
+
+@keyframes fadeInUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Hover effect */
+.product-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.12);
+  border-color: #e94560;
+}
+
+/* Image */
+.product-card img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  transition: transform 0.4s ease, box-shadow 0.3s ease;
+  background: #fafafa;
+}
+
+.product-card:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Title & text */
+.product-card h3 {
+  font-size: 18px;
+  color: #1a1a2e;
+  margin: 6px 0 4px;
+  font-weight: 700;
+}
+
+.product-card p {
+  font-size: 14px;
+  color: #555;
+  margin: 4px 0;
+  line-height: 1.4;
+}
+
+.product-card p strong {
+  color: #1a1a2e;
+}
+
+/* "View Details" link */
+.product-card a {
+  display: inline-block;
+  margin-top: 12px;
+  padding: 8px 20px;
+  background: #1a1a2e;
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.product-card a:hover {
+  background: #e94560;
+  border-color: #e94560;
+  transform: scale(1.05);
+  box-shadow: 0 4px 14px rgba(233, 69, 96, 0.3);
+}
+
+/* Responsive tweak */
+@media (max-width: 600px) {
+  .product-card {
+    width: 100%;
+    margin: 12px 0;
+  }
+}
