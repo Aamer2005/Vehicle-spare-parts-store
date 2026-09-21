@@ -7,6 +7,9 @@ const dns = require('dns');
 
 dns.setServers(["8.8.8.8", "1.1.1.1"]);
 
+const upload = require('./middleware/upload');
+
+
 const app = express();
 app.use(cors({
   origin: '*', // For development/testing – allows all origins
@@ -68,20 +71,26 @@ app.use('/uploads', express.static('uploads'));
 app.post('/api/products', upload.single('image'), async (req, res) => {
   try {
     const { productName, pNo, crossReference, category, description, type } = req.body;
-    //const image = req.file ? req.file.path : ''; // Cloudinary returns `path`; for local, use `req.file.filename`
+
+    // Build image path
     const image = req.file ? `/uploads/${req.file.filename}` : '';
+
     const newProduct = new Product({
       productName,
       pNo,
-      crossReference: crossReference ? crossReference.split(',').map(s => s.trim()) : [],
+      crossReference: crossReference
+        ? crossReference.split(',').map(s => s.trim()).filter(Boolean)
+        : [],
       category,
       description,
       type,
-      image // store the URL or filename
+      image,
     });
+
     await newProduct.save();
     res.status(201).json(newProduct);
   } catch (err) {
+    console.error('❌ POST /api/products error:', err);
     res.status(400).json({ error: err.message });
   }
 });
