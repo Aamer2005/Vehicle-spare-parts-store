@@ -8,8 +8,13 @@ const dns = require('dns');
 dns.setServers(["8.8.8.8", "1.1.1.1"]);
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: '*', // For development/testing – allows all origins
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: false
+}));
 app.use(express.json());
+app.use('/uploads', express.static('uploads'));
 
 
 // MongoDB connection – using only ONE connection attempt
